@@ -75,14 +75,16 @@ const ollamaRequest = async (promptRequest: promptRequest) => {
   const lines = text.trim().split('\n');
 
   let responseArray: ChatObject[] = [];
+  let responseMessage: string;
 
   for (const line of lines) {
     const result = JSON.parse(line);
     responseArray.push(result);
   }
-  console.log(responseArray);
+  // console.log(responseArray);
 
-  console.log(concatenateContent(responseArray));
+  responseMessage = concatenateContent(responseArray);
+  console.log(responseMessage)
 }
 
 
