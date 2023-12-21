@@ -6,12 +6,10 @@ import PromptInput from "../promptInput/PromptInput";
 const ConversationBox = () => {
   return (
     <Box>
-
-        <Stack  spacing={2}>
-      <PromptOutput />
-      <PromptInput />
-
-        </Stack>
+      <Stack spacing={1.5}>
+        <PromptOutput />
+        <PromptInput />
+      </Stack>
     </Box>
   )
 

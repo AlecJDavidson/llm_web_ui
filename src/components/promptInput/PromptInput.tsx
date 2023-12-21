@@ -1,5 +1,7 @@
 import { Input, Stack, Button } from '@mui/joy';
 import { useState } from 'react';
+import ollamaRequest from '../../ollama/requests';
+import { promptRequest } from '../../ollama/requests';
 
 
 function PromptInput() {
@@ -15,6 +17,13 @@ function PromptInput() {
     setPromptInput('');
   }
 
+  const promptRequstObject: promptRequest = {
+    model: 'mistral',
+    messages:
+      { "role": "user", "content": promptInput }
+
+  }
+
   return (
     <form
       onSubmit={(event) => {
@@ -25,12 +34,12 @@ function PromptInput() {
           alert(JSON.stringify(formJson));
         }
         else {
-          console.log(promptInput);
+          ollamaRequest(promptRequstObject)
           clearInputBox();
         }
       }}
     >
-      <Stack spacing={1}>
+      <Stack spacing={1.5}>
         <Input placeholder="Ask a question to your local LLM" value={promptInput} required onChange={handleInputChange} />
         <Button type="submit">Submit</Button>
       </Stack>

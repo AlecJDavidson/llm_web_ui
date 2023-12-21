@@ -5,11 +5,9 @@ import { Box } from '@mui/joy'
 function App() {
 
   return (
-    <>
-      <Box>
-        <ConversationBox />
-      </Box>
-    </>
+    <Box>
+      <ConversationBox />
+    </Box>
   )
 }
 
