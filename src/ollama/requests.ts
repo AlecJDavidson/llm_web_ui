@@ -1,4 +1,3 @@
-
 export interface promptRequest {
 
   model: string;
@@ -28,6 +27,8 @@ interface ChatObject {
 }
 
 function concatenateContent(responseArray: ChatObject[]): string {
+
+
   let result = '';
 
   for (const content of responseArray) {
