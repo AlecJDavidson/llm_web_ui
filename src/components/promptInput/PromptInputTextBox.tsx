@@ -27,7 +27,7 @@ const PromptInput: React.FC = () => {
 
   return (
     <form
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
@@ -35,9 +35,9 @@ const PromptInput: React.FC = () => {
           alert(JSON.stringify(formJson));
         }
         else {
-          let completion = ollamaRequest(promptRequstObject)
-          console.log(completion);
           clearInputBox();
+          let completion = ollamaRequest(promptRequstObject)
+          console.log("Completion: ", await completion);
 
         }
       }}

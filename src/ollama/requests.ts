@@ -1,5 +1,3 @@
-
-
 export interface promptRequest {
 
   model: string;
@@ -45,7 +43,7 @@ const chatObjects: ChatObject[] = [
 ];
 
 const concatenatedContent = concatenateContent(chatObjects);
-console.log(concatenatedContent);
+// console.log(concatenatedContent);
 
 
 const ollamaRequest = async (promptRequest: promptRequest) => {
@@ -74,17 +72,17 @@ const ollamaRequest = async (promptRequest: promptRequest) => {
   const lines = text.trim().split('\n');
 
   let responseArray: ChatObject[] = [];
-  let responseMessage: string;
+  let completion: string;
 
   for (const line of lines) {
     const result = JSON.parse(line);
     responseArray.push(result);
   }
 
-  responseMessage = concatenateContent(responseArray);
-  console.log("Prompt: ", promptRequest.messages.content);
-  console.log("Response: ", responseMessage);
-  return responseMessage;
+  completion = concatenateContent(responseArray);
+  // console.log("Prompt: ", promptRequest.messages.content);
+  // console.log("Completion: ", completion);
+  return completion;
 }
 
 
