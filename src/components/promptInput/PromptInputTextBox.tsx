@@ -4,7 +4,7 @@ import ollamaRequest from '../../ollama/requests';
 import { promptRequest } from '../../ollama/requests';
 
 
-function PromptInput() {
+const PromptInput: React.FC = () => {
 
   const [promptInput, setPromptInput]: any = useState('');
 
@@ -24,6 +24,7 @@ function PromptInput() {
 
   }
 
+
   return (
     <form
       onSubmit={(event) => {
@@ -34,8 +35,10 @@ function PromptInput() {
           alert(JSON.stringify(formJson));
         }
         else {
-          ollamaRequest(promptRequstObject)
+          let completion = ollamaRequest(promptRequstObject)
+          console.log(completion);
           clearInputBox();
+
         }
       }}
     >
@@ -47,4 +50,4 @@ function PromptInput() {
   )
 }
 
-export default PromptInput 
+export default PromptInput; 

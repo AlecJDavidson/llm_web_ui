@@ -1,3 +1,5 @@
+
+
 export interface promptRequest {
 
   model: string;
@@ -7,13 +9,13 @@ export interface promptRequest {
   }
 }
 
-interface Message {
+export interface Message {
   role: string;
   content: string;
   images: null | any; // Update the type accordingly based on your data
 }
 
-interface ChatObject {
+export interface ChatObject {
   model: string;
   created_at: string;
   message: Message;
@@ -27,9 +29,7 @@ interface ChatObject {
 }
 
 function concatenateContent(responseArray: ChatObject[]): string {
-
-
-  let result = '';
+  let result: string = '';
 
   for (const content of responseArray) {
     if (content.message && content.message.content) {
@@ -49,8 +49,6 @@ console.log(concatenatedContent);
 
 
 const ollamaRequest = async (promptRequest: promptRequest) => {
-
-
   const url = 'http://localhost:11434/api/chat';
   const data = {
     model: 'mistral',
@@ -82,10 +80,11 @@ const ollamaRequest = async (promptRequest: promptRequest) => {
     const result = JSON.parse(line);
     responseArray.push(result);
   }
-  // console.log(responseArray);
 
   responseMessage = concatenateContent(responseArray);
-  console.log(responseMessage)
+  console.log("Prompt: ", promptRequest.messages.content);
+  console.log("Response: ", responseMessage);
+  return responseMessage;
 }
 
 
