@@ -37,7 +37,7 @@ const PromptInput: React.FC = () => {
         else {
           clearInputBox();
           let completion = ollamaRequest(promptRequstObject)
-          console.log("Completion: ", await completion);
+          // console.log("Completion: ", await completion);
 
         }
       }}

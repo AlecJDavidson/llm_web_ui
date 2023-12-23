@@ -1,6 +1,6 @@
 import { Box, Stack } from "@mui/joy";
 import PromptInput from "../promptInput/PromptInputTextBox";
-import ChatHistory from "../chatHistory/ChatHistory";
+import { ChatHistory } from "../chatHistory/ChatHistory";
 
 
 const ConversationBox = () => {
