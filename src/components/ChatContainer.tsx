@@ -1,5 +1,5 @@
 // ChatContainer.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ollamaRequest } from '../ollama/ollamaRequest';
 import { OllamaRequest } from '../interfaces/ollamaInterfaces';
 import { ChatObject } from '../interfaces/chatInterfaces';
@@ -16,31 +16,40 @@ interface ChatContainerProps {
   toggleDarkMode: () => void;
 }
 
-const ChatContainer: React.FC<ChatContainerProps> = ({ darkMode, toggleDarkMode }) => {
-  const [prompt, setPrompt] = useState<string>('');
-  const [chatLog, setChatLog] = useState<ChatObject[]>([]);
+const ChatContainer: React.FC<ChatContainerProps> = ({
+  prompt,
+  setPrompt,
+  chatLog,
+  setChatLog,
+  handleSubmit,
+  darkMode,
+  toggleDarkMode,
+}) => {
+  // Effect to persist chatLog to local storage
+  useEffect(() => {
+    localStorage.setItem('chatLog', JSON.stringify(chatLog));
+  }, [chatLog]);
 
-  const handleSubmit = async () => {
-    if (prompt.trim() !== '') {
-      let promptRequest: OllamaRequest = {
-        model: 'mistral',
-        messages: { role: 'user', content: prompt },
-      };
 
-      // Use await to get the completion asynchronously
-      const response = await ollamaRequest(promptRequest);
+useEffect(() => {
+  try {
+    const storedChatLog = localStorage.getItem('chatLog');
+    console.log('Stored chat log:', storedChatLog);
 
-      // Update state after receiving the response
-
-      // Update chatLog with a new object containing prompt and completion
-
-      let chatObject: ChatObject = { prompt, completion: response }
-      setChatLog([...chatLog, chatObject]);
-
-      // Clear the prompt and completion after submission
-      setPrompt('');
+    if (storedChatLog) {
+      setChatLog(JSON.parse(storedChatLog));
     }
+  } catch (error) {
+    console.error('Error loading chatLog from local storage:', error);
+  }
+}, []); // Empty dependency array ensures this runs only on mount
+
+
+  const handleFormSubmit = async () => {
+    await handleSubmit(); // Ensure the state is updated before persisting to local storage
   };
+
+
 
 
   return (
@@ -49,7 +58,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({ darkMode, toggleDarkMode 
       <ChatInput
         prompt={prompt}
         setPrompt={setPrompt}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleFormSubmit}
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
       />
