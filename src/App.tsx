@@ -1,31 +1,40 @@
 import React, { useState } from 'react';
 import { ollamaRequest } from './ollama/ollamaRequest';
-import { ChatObject, ChatLogObject, ChatLogHistoryObject } from './interfaces/chatInterfaces';
 import { OllamaRequest } from './interfaces/ollamaInterfaces';
+import { ChatLogObject } from './interfaces/chatInterfaces';
 import './App.css';
 
 const App: React.FC = () => {
   const [prompt, setPrompt] = useState<string>('');
   const [completion, setCompletion] = useState<string>('');
-  const [chatLog, setChatLog] = useState<ChatLogObject>([]);
+  const [promptHistory, setPromptHistory] = useState<string[]>([]);
+  const [completionHistory, setCompletionHistory] = useState<string[]>([]);
+  const [chatLog, setChatLog] = useState<ChatLogObject[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrompt(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (prompt.trim() !== '') {
-      setChatLog([...chatLog, prompt]);
-      let request: OllamaRequest = {
+      let promptRequest: OllamaRequest = {
         model: 'mistral',
-        messages:
-          { "role": "user", "content": prompt }
+        messages: { role: 'user', content: prompt },
+      };
 
-      }
+      // Use await to get the completion asynchronously
+      const response = await ollamaRequest(promptRequest);
 
-      ollamaRequest(request);
-      console.log(ollamaRequest);
+      // Update state after receiving the response
+      setPromptHistory([...promptHistory, prompt]);
+      setCompletionHistory([...completionHistory, response]);
+
+      // Update chatLog with a new object containing prompt and completion
+      setChatLog([...chatLog, { prompt, completion: response }]);
+
+      // Clear the prompt and completion after submission
       setPrompt('');
+      setCompletion('');
     }
   };
 
@@ -34,8 +43,16 @@ const App: React.FC = () => {
       <div className="box">
         <div className="chat-log-box">
           <ul>
-            {chatLog.map((msg, index) => (
-              <li key={index}>{msg}</li>
+            {chatLog.map((chat, chatIndex) => (
+
+              <div className="chat-message-container">
+                <li key={chatIndex}>
+                  {`User: ${chat.prompt}`}
+                  <br />
+                  {`AI: ${chat.completion}`}
+                </li>
+
+              </div>
             ))}
           </ul>
         </div>

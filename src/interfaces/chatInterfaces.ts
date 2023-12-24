@@ -2,8 +2,9 @@
 
 // For use when displaying the messages back and forth between 
 // the prompts and the completion responses.
+
+// TODO: Add ID back later
 export interface ChatObject {
-  id: string; 
   prompt: string;
   completion: string;
 }
@@ -11,7 +12,6 @@ export interface ChatObject {
 // For use in keeping a history chat 
 // objects displayed in the webUI 
 export interface ChatLogObject {
-  id: string;
   chatLog: ChatObject[];
 }
 

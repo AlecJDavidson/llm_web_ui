@@ -22,11 +22,25 @@
   max-height: 90%;
 }
 
+.chat-message-container {
+
+  text-align: left;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 25px;
+  width: 90%; /* Adjust the width as needed */
+  height: 90%;
+  max-width: 95%; /* Set a maximum width if necessary */
+  max-height: 95%;
+}
+
 .chat-log-box {
+  justify-content: center;
   border-radius: 8px;
   border: 1px solid #ddd;
   padding: 10px;
   height: 90%;
+
   max-height: 100%; /* Set a maximum height if necessary */
   overflow-y: auto;
 }
