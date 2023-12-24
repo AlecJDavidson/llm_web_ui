@@ -49,7 +49,8 @@ const App: React.FC = () => {
                 <li key={chatIndex}>
                   {`User: ${chat.prompt}`}
                   <br />
-                  {`AI: ${chat.completion}`}
+                  <br />
+                  {`Mistral: ${chat.completion}`}
                 </li>
 
               </div>

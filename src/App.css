@@ -23,10 +23,10 @@
 }
 
 .chat-message-container {
-
   text-align: left;
   border-radius: 10px;
   border: 1px solid #ccc;
+  margin-top: 5px;
   padding: 25px;
   width: 90%; /* Adjust the width as needed */
   height: 90%;
