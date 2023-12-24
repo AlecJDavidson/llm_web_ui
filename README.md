@@ -64,6 +64,12 @@ If you do decide to use another model, you'll need to change the hard coded "mis
   - Implement sessions to store chat history.
   - Allow users to create and delete sessions.
 
+- **Settings Management:**
+  - Implement Settings View.
+
+- **Model Management:**
+  - Implement the ability to change models in the UI. 
+
 ## Contributing
 
 We welcome contributions! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
