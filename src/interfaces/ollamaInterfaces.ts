@@ -1,3 +1,5 @@
+// Interfaces for Ollama Requests / Responses
+
 export interface OllamaRequest{
   model: string;
   messages: {
