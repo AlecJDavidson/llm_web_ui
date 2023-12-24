@@ -1,3 +1,6 @@
+Certainly! Below is the updated README file with a new "Project Roadmap" section:
+
+```markdown
 # Local LLM WebUI
 
 ## Description
@@ -49,7 +52,17 @@ ollama run mistral
 ```
 
 Feel free to experiment with different models by replacing "mistral" with the name of any model from the [Ollama Model Library](https://ollama.ai/library).
-If you do decide to use another model, you'll need to change the hard coded "mistral" in line 22 of App.tsx 
+If you do decide to use another model, you'll need to change the hard coded "mistral" in line 22 of App.tsx
+
+## Project Roadmap
+
+- **Backend Integration:**
+  - Implement a backend using Apollo Server.
+  - Integrate PostgreSQL as the database for storing data.
+
+- **Session Management:**
+  - Implement sessions to store chat history.
+  - Allow users to create and delete sessions.
 
 ## Contributing
 
@@ -66,3 +79,4 @@ This project is not currently licensed
 - Vite: [https://vitejs.dev/](https://vitejs.dev/)
 
 Thank you for using and contributing to this project!
+```
