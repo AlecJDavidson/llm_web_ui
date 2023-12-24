@@ -4,6 +4,7 @@ import ChatContainer from './components/ChatContainer';
 import { OllamaRequest } from './interfaces/ollamaInterfaces';
 import { ollamaRequest } from './ollama/ollamaRequest';
 import { ChatObject } from './interfaces/chatInterfaces';
+import { llm_model } from '../modelConfig.ts';
 import './App.css';
 
 const App: React.FC = () => {
@@ -28,7 +29,7 @@ const App: React.FC = () => {
   const handleSubmit = async () => {
     if (prompt.trim() !== '') {
       const promptRequest: OllamaRequest = {
-        model: 'mistral',
+        model: llm_model,
         messages: { role: 'user', content: prompt },
       };
 
