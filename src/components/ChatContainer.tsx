@@ -7,6 +7,11 @@ import ChatLog from './ChatLog';
 import ChatInput from './ChatInput';
 
 interface ChatContainerProps {
+  prompt: string;
+  setPrompt: Function;
+  chatLog: ChatObject[];
+  setChatLog: Function;
+  handleSubmit: Function;
   darkMode: boolean;
   toggleDarkMode: () => void;
 }
@@ -15,7 +20,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({ darkMode, toggleDarkMode 
   const [prompt, setPrompt] = useState<string>('');
   const [chatLog, setChatLog] = useState<ChatObject[]>([]);
 
-const handleSubmit = async () => {
+  const handleSubmit = async () => {
     if (prompt.trim() !== '') {
       let promptRequest: OllamaRequest = {
         model: 'mistral',
