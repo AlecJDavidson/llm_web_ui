@@ -1,4 +1,4 @@
-# Local LLM 
+# Local LLM WebUI
 
 ## Description
 
