@@ -1,7 +1,7 @@
-import { OllamaRequest, OllamaResponse  } from "../interfaces/interfaces";
+import { OllamaRequest, OllamaResponse } from "../interfaces/interfaces";
 
 
-function concatenateCompletion(completionArray: OllamaResponse[]): string {
+const concatenateCompletion = (completionArray: OllamaResponse[]): string => {
   let result: string = '';
 
   for (const content of completionArray) {
@@ -12,13 +12,6 @@ function concatenateCompletion(completionArray: OllamaResponse[]): string {
 
   return result.trim();
 }
-
-const ollamaResponses: OllamaResponse[] = [
-  // Your array of objects goes here
-];
-
-const concatenatedCompletion = concatenateCompletion(ollamaResponses);
-console.log(concatenatedCompletion);
 
 
 const ollamaRequest = async (promptRequest: OllamaRequest) => {
@@ -59,10 +52,6 @@ const ollamaRequest = async (promptRequest: OllamaRequest) => {
   console.log("Completion: ", completion);
   return completion;
 }
-
-
-
-
 
 export default ollamaRequest;
 
