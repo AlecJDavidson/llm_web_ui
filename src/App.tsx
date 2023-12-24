@@ -1,19 +1,29 @@
 // App.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatContainer from './components/ChatContainer';
 import { OllamaRequest } from './interfaces/ollamaInterfaces';
 import { ollamaRequest } from './ollama/ollamaRequest';
 import { ChatObject } from './interfaces/chatInterfaces';
 import './App.css';
+
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [prompt, setPrompt] = useState<string>('');
-  const [chatLog, setChatLog] = useState<ChatObject[]>([]);
+  // Load theme from localStorage, default to false if not found
+  const [darkMode, setDarkMode] = useState<boolean>(
+    localStorage.getItem('theme') === 'true'
+  );
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle('dark-mode', !darkMode);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    document.body.classList.toggle('dark-mode', newDarkMode);
+
+    // Update localStorage value
+    // TODO: Move this to user stored settings when available
+    localStorage.setItem('theme', newDarkMode.toString());
   };
+
+  const [prompt, setPrompt] = useState<string>('');
+  const [chatLog, setChatLog] = useState<ChatObject[]>([]);
 
   const handleSubmit = async () => {
     if (prompt.trim() !== '') {
@@ -35,6 +45,11 @@ const App: React.FC = () => {
     }
   };
 
+  // Add useEffect to ensure dark mode is applied on component mount
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
   return (
     <div className={`app-container ${darkMode ? 'dark-mode' : ''}`}>
       <ChatContainer
@@ -51,6 +66,4 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-/// 
 
