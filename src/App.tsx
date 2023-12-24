@@ -1,13 +1,9 @@
 import './App.css'
-import ConversationBox from './components/conversationBox/ConversationBox'
-import { Box } from '@mui/joy'
 
 const App = () => {
   return (
+  <div>reset</div>
 
-    <Box>
-      <ConversationBox />
-    </Box>
   )
 }
 
