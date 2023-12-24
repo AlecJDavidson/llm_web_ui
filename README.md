@@ -1,5 +1,3 @@
-Certainly! Below is the updated README file with a new "Project Roadmap" section:
-
 ```markdown
 # Local LLM WebUI
 
