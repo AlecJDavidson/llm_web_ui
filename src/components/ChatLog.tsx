@@ -1,12 +1,18 @@
 // ChatLog.tsx
 import React from 'react';
 import { ChatObject } from '../interfaces/chatInterfaces';
+import CodeComponent from './CodeComponent';
 
 interface ChatLogProps {
   chatLog: ChatObject[];
 }
 
 const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
+
+  const renderCodeBlock = (code: string, index: number) => {
+    return <CodeComponent key={index}>{code}</CodeComponent>;
+  };
+
   return (
     <div className="chat-log-box">
       <ul>
@@ -16,7 +22,14 @@ const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
               {`You: ${chat.prompt}`}
               <br />
               <br />
-              {`Model: ${chat.completion}`}
+              {`Model: `}
+              {chat.completion.split('```').map((part, partIndex) => (
+                partIndex % 2 === 0 ? (
+                  <span key={partIndex}><br/><br/>{part}<br/><br/></span>
+                ) : (
+                  renderCodeBlock(part, partIndex)
+                )
+              ))}
             </li>
           </div>
         ))}
