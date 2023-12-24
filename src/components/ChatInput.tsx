@@ -16,9 +16,16 @@ const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, 
   const handleInternalSubmit = async () => {
     setLoading(true);
 
-    await handleSubmit(); // LSP says that await has no effect, that is a lie. The "...loading" state will not behave correctly without it.
+    await handleSubmit();
 
     setLoading(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Check if the pressed key is Enter
+    if (e.key === 'Enter') {
+      handleInternalSubmit();
+    }
   };
 
   return (
@@ -28,10 +35,11 @@ const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, 
         placeholder="Type a prompt to your local LLM..."
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
+        onKeyDown={handleKeyDown} // Listen for the Enter key press
         className="text-input"
       />
       <div>
-        <button onClick={handleInternalSubmit} className="submit-button">
+        <button onClick={handleInternalSubmit} disabled={loading} className="submit-button">
           {!loading ? 'Submit' : '...Loading'}
         </button>
       </div>
