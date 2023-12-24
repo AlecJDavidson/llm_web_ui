@@ -7,6 +7,22 @@ interface ChatLogProps {
   chatLog: ChatObject[];
 }
 
+const formatNumberedList = (text: string) => {
+  const lines = text.split('\n');
+  const formattedLines = lines.map((line, index) => {
+    if (/^\d+\./.test(line.trim())) {
+      const [listNumber, ...restOfLine] = line.split('. ');
+      return (
+        <React.Fragment key={index}>
+          {listNumber}.) {restOfLine.join('. ')}<br /><br />
+        </React.Fragment>
+      );
+    }
+    return <React.Fragment key={index}>{line}<br /></React.Fragment>;
+  });
+  return formattedLines;
+};
+
 const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
   const renderCodeBlock = (code: string, index: number) => {
     return <CodeComponent key={index}><pre>{code}</pre></CodeComponent>;
@@ -24,7 +40,7 @@ const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
               {`Model: `}
               {chat.completion.split('```').map((part, partIndex) => (
                 partIndex % 2 === 0 ? (
-                  <React.Fragment key={partIndex}>{part}</React.Fragment>
+                  <React.Fragment key={partIndex}>{formatNumberedList(part)}</React.Fragment>
                 ) : (
                   renderCodeBlock(part, partIndex)
                 )
