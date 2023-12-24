@@ -52,7 +52,7 @@ const App: React.FC = () => {
                   {`You: ${chat.prompt}`}
                   <br />
                   <br />
-                  {`Ai: ${chat.completion}`}
+                  {`Model: ${chat.completion}`}
                 </li>
               </div>
             ))}
