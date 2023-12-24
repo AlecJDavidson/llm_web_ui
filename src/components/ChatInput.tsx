@@ -22,8 +22,12 @@ const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, 
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Check if the pressed key is Enter
-    if (e.key === 'Enter') {
+    // Check if the pressed key is Enter and Ctrl is pressed
+    if (e.key === 'Enter' && e.ctrlKey) {
+      // Insert a newline character instead of submitting the form
+      setPrompt((prevPrompt) => `${prevPrompt}\n`);
+    } else if (e.key === 'Enter') {
+      // Submit the form if only Enter is pressed
       handleInternalSubmit();
     }
   };
