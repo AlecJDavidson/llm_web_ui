@@ -10,12 +10,14 @@ const App: React.FC = () => {
   const [promptHistory, setPromptHistory] = useState<string[]>([]);
   const [completionHistory, setCompletionHistory] = useState<string[]>([]);
   const [chatLog, setChatLog] = useState<ChatLogObject[]>([]);
+  const [loading, setLoading] = useState<Boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrompt(e.target.value);
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     if (prompt.trim() !== '') {
       let promptRequest: OllamaRequest = {
         model: 'mistral',
@@ -35,6 +37,7 @@ const App: React.FC = () => {
       // Clear the prompt and completion after submission
       setPrompt('');
       setCompletion('');
+      setLoading(false);
     }
   };
 
@@ -66,7 +69,7 @@ const App: React.FC = () => {
             className="text-input"
           />
           <button onClick={handleSubmit} className="submit-button">
-            Submit
+           {!loading ? "submit": "...loading"} 
           </button>
         </div>
       </div>
