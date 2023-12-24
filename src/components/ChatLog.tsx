@@ -10,7 +10,7 @@ interface ChatLogProps {
 const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
 
   const renderCodeBlock = (code: string, index: number) => {
-    return <CodeComponent key={index}>{code}</CodeComponent>;
+    return <CodeComponent key={index}><pre>{code}</pre></CodeComponent>;
   };
 
   return (
@@ -25,7 +25,7 @@ const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
               {`Model: `}
               {chat.completion.split('```').map((part, partIndex) => (
                 partIndex % 2 === 0 ? (
-                  <span key={partIndex}><br/><br/>{part}<br/><br/></span>
+                  <span key={partIndex}><br/>{part}<br/></span>
                 ) : (
                   renderCodeBlock(part, partIndex)
                 )
