@@ -30,7 +30,6 @@ const CodeComponent: React.FC<CodeProps> = ({ children }) => {
           fontFamily: '"SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace',
           lineHeight: 'normal',
           background: 'rgba(135, 131, 100, 0.15)',
-          color: '#FAF9F6',
           borderRadius: '4px',
           fontSize: '90%',
           padding: '0.2em 0.4em',

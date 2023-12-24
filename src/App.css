@@ -143,6 +143,7 @@ body.dark-mode .chat-log-box {
 
 body.dark-mode .text-input,
 body.dark-mode .submit-button,
+body.dark-mode .copy-clipboard,
 body.dark-mode .toggle-dark-mode {
   border-color: var(--border-color-dark);
   background-color: var(--background-color-dark);
