@@ -69,7 +69,7 @@ const App: React.FC = () => {
             className="text-input"
           />
           <button onClick={handleSubmit} className="submit-button">
-           {!loading ? "submit": "...loading"} 
+            {!loading ? "submit" : "...loading"}
           </button>
         </div>
       </div>
