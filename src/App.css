@@ -98,11 +98,23 @@ body {
   cursor: pointer;
 }
 
+.copy-clipboard {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 2px 5px;
+  margin-left: 1px;
+  cursor: pointer;
+}
+
+
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
+
 
 /* Make it full-width on small screens */
 @media screen and (max-width: 600px) {
