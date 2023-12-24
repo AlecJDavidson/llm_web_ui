@@ -49,6 +49,10 @@ After setting up the project, you can use Ollama to run LLMs. To run the Mistral
 ollama run mistral
 ```
 
+```bash
+ollama serve 
+```
+
 Feel free to experiment with different models by replacing "mistral" with the name of any model from the [Ollama Model Library](https://ollama.ai/library).
 If you do decide to use another model, you'll need to change the 'llm_model' value in modelConfig.ts, by default I have it set to mistral. 
 
