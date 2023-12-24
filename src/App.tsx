@@ -83,7 +83,7 @@ const App: React.FC = () => {
           <div>
 
  <button onClick={toggleDarkMode} className="toggle-dark-mode">
-          {darkMode ? <FaMoon /> : <FaSun />} {/* Use the imported icons */}
+          {!darkMode ? <FaMoon /> : <FaSun />} {/* Use the imported icons */}
         </button>
           </div>
         </div>
