@@ -1,35 +1,10 @@
-export interface promptRequest {
+import { OllamaRequest, OllamaResponse  } from "../interfaces/interfaces";
 
-  model: string;
-  messages: {
-    role: string;
-    content: string;
-  }
-}
 
-export interface Message {
-  role: string;
-  content: string;
-  images: null | any; // Update the type accordingly based on your data
-}
-
-export interface ChatObject {
-  model: string;
-  created_at: string;
-  message: Message;
-  done: boolean;
-  total_duration?: number;
-  load_duration?: number;
-  prompt_eval_count?: number;
-  prompt_eval_duration?: number;
-  eval_count?: number;
-  eval_duration?: number;
-}
-
-function concatenateContent(responseArray: ChatObject[]): string {
+function concatenateCompletion(completionArray: OllamaResponse[]): string {
   let result: string = '';
 
-  for (const content of responseArray) {
+  for (const content of completionArray) {
     if (content.message && content.message.content) {
       result += content.message.content;
     }
@@ -38,15 +13,15 @@ function concatenateContent(responseArray: ChatObject[]): string {
   return result.trim();
 }
 
-const chatObjects: ChatObject[] = [
+const ollamaResponses: OllamaResponse[] = [
   // Your array of objects goes here
 ];
 
-const concatenatedContent = concatenateContent(chatObjects);
-// console.log(concatenatedContent);
+const concatenatedCompletion = concatenateCompletion(ollamaResponses);
+console.log(concatenatedCompletion);
 
 
-const ollamaRequest = async (promptRequest: promptRequest) => {
+const ollamaRequest = async (promptRequest: OllamaRequest) => {
   const url = 'http://localhost:11434/api/chat';
   const data = {
     model: 'mistral',
@@ -71,17 +46,17 @@ const ollamaRequest = async (promptRequest: promptRequest) => {
   const text = await response.text();
   const lines = text.trim().split('\n');
 
-  let responseArray: ChatObject[] = [];
+  let ollamaResponses: OllamaResponse[] = [];
   let completion: string;
 
   for (const line of lines) {
     const result = JSON.parse(line);
-    responseArray.push(result);
+    ollamaResponses.push(result);
   }
 
-  completion = concatenateContent(responseArray);
-  // console.log("Prompt: ", promptRequest.messages.content);
-  // console.log("Completion: ", completion);
+  completion = concatenateCompletion(ollamaResponses);
+  console.log("Prompt: ", promptRequest.messages.content);
+  console.log("Completion: ", completion);
   return completion;
 }
 
