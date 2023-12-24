@@ -83,4 +83,3 @@ This project is not currently licensed
 - Vite: [https://vitejs.dev/](https://vitejs.dev/)
 
 Thank you for using and contributing to this project!
-```
