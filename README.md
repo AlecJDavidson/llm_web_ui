@@ -49,6 +49,7 @@ ollama run mistral
 ```
 
 Feel free to experiment with different models by replacing "mistral" with the name of any model from the [Ollama Model Library](https://ollama.ai/library).
+If you do decide to use another model, you'll need to change the hard coded "mistral" in line 22 of App.tsx 
 
 ## Contributing
 

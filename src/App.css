@@ -66,6 +66,15 @@
   cursor: pointer;
 }
 
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 /* Make it full-width on small screens */
 @media screen and (max-width: 600px) {
   .box {

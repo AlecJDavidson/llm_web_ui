@@ -12,6 +12,7 @@ export interface ChatObject {
 // For use in keeping a history chat 
 // objects displayed in the webUI 
 export interface ChatLogObject {
+  id: string;
   chatLog: ChatObject[];
 }
 

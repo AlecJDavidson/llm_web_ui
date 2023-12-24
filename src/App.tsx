@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { ollamaRequest } from './ollama/ollamaRequest';
 import { OllamaRequest } from './interfaces/ollamaInterfaces';
-import { ChatLogObject } from './interfaces/chatInterfaces';
+import { ChatObject} from './interfaces/chatInterfaces';
 import './App.css';
 
 const App: React.FC = () => {
   const [prompt, setPrompt] = useState<string>('');
-  const [completion, setCompletion] = useState<string>('');
   const [promptHistory, setPromptHistory] = useState<string[]>([]);
   const [completionHistory, setCompletionHistory] = useState<string[]>([]);
-  const [chatLog, setChatLog] = useState<ChatLogObject[]>([]);
+  const [chatLog, setChatLog] = useState<ChatObject[]>([]);
   const [loading, setLoading] = useState<Boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,11 +31,12 @@ const App: React.FC = () => {
       setCompletionHistory([...completionHistory, response]);
 
       // Update chatLog with a new object containing prompt and completion
-      setChatLog([...chatLog, { prompt, completion: response }]);
+
+      let chatObject: ChatObject = { prompt, completion: response }
+      setChatLog([...chatLog, chatObject]);
 
       // Clear the prompt and completion after submission
       setPrompt('');
-      setCompletion('');
       setLoading(false);
     }
   };
@@ -47,15 +47,13 @@ const App: React.FC = () => {
         <div className="chat-log-box">
           <ul>
             {chatLog.map((chat, chatIndex) => (
-
               <div className="chat-message-container">
                 <li key={chatIndex}>
-                  {`User: ${chat.prompt}`}
+                  {`You: ${chat.prompt}`}
                   <br />
                   <br />
-                  {`Mistral: ${chat.completion}`}
+                  {`Ai: ${chat.completion}`}
                 </li>
-
               </div>
             ))}
           </ul>
