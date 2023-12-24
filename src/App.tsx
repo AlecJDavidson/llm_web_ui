@@ -1,6 +1,9 @@
 // App.tsx
 import React, { useState } from 'react';
 import ChatContainer from './components/ChatContainer';
+import { OllamaRequest } from './interfaces/ollamaInterfaces';
+import { ollamaRequest } from './ollama/ollamaRequest';
+import { ChatObject } from './interfaces/chatInterfaces';
 import './App.css';
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -16,7 +19,7 @@ const App: React.FC = () => {
     if (prompt.trim() !== '') {
       const promptRequest: OllamaRequest = {
         model: 'mistral',
-        messages: [{ role: 'user', content: prompt }],
+        messages: { role: 'user', content: prompt },
       };
 
       try {

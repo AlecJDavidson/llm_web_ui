@@ -1,6 +1,6 @@
 // ChatInput.tsx
 import React, { useState } from 'react';
-import { ChatObject } from '../interfaces/chatInterfaces';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 interface ChatInputProps {
   prompt: string;
@@ -8,16 +8,15 @@ interface ChatInputProps {
   handleSubmit: () => void;
   darkMode: boolean;
   toggleDarkMode: () => void;
-  setChatLog: React.Dispatch<React.SetStateAction<ChatObject[]>>;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, darkMode, toggleDarkMode, setChatLog }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, darkMode, toggleDarkMode }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleInternalSubmit = async () => {
     setLoading(true);
 
-    await handleSubmit();
+    await handleSubmit(); // LSP says that await has no effect, that is a lie. The "...loading" state will not behave correctly without it.
 
     setLoading(false);
   };
@@ -38,7 +37,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ prompt, setPrompt, handleSubmit, 
       </div>
       <div>
         <button onClick={toggleDarkMode} className="toggle-dark-mode">
-          {darkMode ? '🌙' : '☀️'}
+          {darkMode ? <FaMoon /> : <FaSun />}
         </button>
       </div>
     </div>
