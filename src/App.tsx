@@ -7,6 +7,9 @@ import { ChatObject } from './interfaces/chatInterfaces';
 import { llm_model } from '../modelConfig.ts';
 import './App.css';
 
+const test: string[] = ["string", "array"];
+console.log(test);
+
 const App: React.FC = () => {
   // Load theme from localStorage, default to false if not found
   const [darkMode, setDarkMode] = useState<boolean>(
