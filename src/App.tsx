@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useState, useEffect } from 'react';
 import ChatContainer from './components/ChatContainer';
+import ChatSessions from './components/ChatSessions.tsx';
 import { OllamaRequest } from './interfaces/ollamaInterfaces';
 import { ollamaRequest } from './ollama/ollamaRequest';
 import { ChatObject } from './interfaces/chatInterfaces';
@@ -60,6 +61,11 @@ const App: React.FC = () => {
 
   return (
     <div className={`app-container ${darkMode ? 'dark-mode' : ''}`}>
+      <ChatSessions
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        handleSubmit={() => console.log('nothing to submit')}
+      />
       <ChatContainer
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}

@@ -9,6 +9,11 @@ export interface ChatObject {
   completion: string;
 }
 
+export interface ChatSessionsObject {
+  id: string;
+  chatObjects: ChatObject[];
+}
+
 // For use in keeping a history chat 
 // objects displayed in the webUI 
 export interface ChatLogObject {

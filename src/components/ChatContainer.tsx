@@ -1,7 +1,5 @@
 // ChatContainer.tsx
-import React, { useState, useEffect } from 'react';
-import { ollamaRequest } from '../ollama/ollamaRequest';
-import { OllamaRequest } from '../interfaces/ollamaInterfaces';
+import React, { useEffect } from 'react';
 import { ChatObject } from '../interfaces/chatInterfaces';
 import ChatLog from './ChatLog';
 import ChatInput from './ChatInput';

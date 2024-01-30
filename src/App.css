@@ -15,7 +15,7 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   font-family: -apple-system, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 17px; 
+  font-size: 17px;
   font-weight: 500;
 }
 
@@ -31,15 +31,16 @@ body {
   align-items: center;
   justify-content: center;
   height: 95vh;
+  width: 100%;
 }
 
 .box {
   border-radius: 10px;
   border: 1px solid var(--border-color);
   padding: 20px;
-  width: 80%;
+  width: 90%;
   height: 90%;
-  max-width: 90%;
+  max-width: 95%;
   max-height: 90%;
   box-shadow: var(--box-shadow);
 }
@@ -68,6 +69,22 @@ body {
   box-shadow: var(--box-shadow);
 }
 
+
+
+.chat-sessions-box {
+  justify-content: center;
+  margin-right: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  height: 92%;
+  width: 100%;
+  max-height: 92%;
+  max-width: 10%;
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+}
+
 .input-container {
   display: flex;
   margin-top: 15px;
@@ -79,7 +96,7 @@ body {
   padding: 8px;
   flex: 1;
   overflow-y: auto;
-  font-size: 15px; 
+  font-size: 15px;
 }
 
 .submit-button {
@@ -141,6 +158,18 @@ body.dark-mode .chat-log-box {
   box-shadow: var(--box-shadow);
 }
 
+body.dark-mode .chat-sessions-box {
+  border-radius: 8px;
+  border: 1px solid var(--border-color-dark);
+  padding: 10px;
+  height: 92%;
+  width: 100%;
+  max-height: 92%;
+  max-width: 10%;
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+}
+
 body.dark-mode .text-input,
 body.dark-mode .submit-button,
 body.dark-mode .copy-clipboard,
@@ -149,4 +178,3 @@ body.dark-mode .toggle-dark-mode {
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
-
