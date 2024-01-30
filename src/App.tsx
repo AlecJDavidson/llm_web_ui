@@ -27,7 +27,11 @@ const App: React.FC = () => {
   };
 
   const [prompt, setPrompt] = useState<string>('');
-  const [chatLog, setChatLog] = useState<ChatObject[]>(JSON.parse(localStorage.getItem('chatLog')) || []);
+
+  const storedChatLog = localStorage.getItem('chatLog');
+  const parsedChatLog = storedChatLog ? JSON.parse(storedChatLog) : null;
+
+  const [chatLog, setChatLog] = useState<ChatObject[]>(parsedChatLog || { chatLog: [] });
 
   const handleSubmit = async () => {
     if (prompt.trim() !== '') {
