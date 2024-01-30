@@ -5,6 +5,7 @@ import { OllamaRequest } from './interfaces/ollamaInterfaces';
 import { ollamaRequest } from './ollama/ollamaRequest';
 import { ChatObject } from './interfaces/chatInterfaces';
 import { llm_model } from '../modelConfig.ts';
+import { readLocalStorage, setLocalStorage } from './localStorage/localStorage.ts';
 import './App.css';
 
 const test: string[] = ["string", "array"];
@@ -13,7 +14,7 @@ console.log(test);
 const App: React.FC = () => {
   // Load theme from localStorage, default to false if not found
   const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem('theme') === 'true'
+    readLocalStorage('theme') === 'true'
   );
 
   const toggleDarkMode = () => {
@@ -23,12 +24,12 @@ const App: React.FC = () => {
 
     // Update localStorage value
     // TODO: Move this to user stored settings when available
-    localStorage.setItem('theme', newDarkMode.toString());
+    setLocalStorage('theme', newDarkMode.toString());
   };
 
   const [prompt, setPrompt] = useState<string>('');
 
-  const storedChatLog = localStorage.getItem('chatLog');
+  const storedChatLog = readLocalStorage('chatLog');
   const parsedChatLog = storedChatLog ? JSON.parse(storedChatLog) : null;
 
   const [chatLog, setChatLog] = useState<ChatObject[]>(parsedChatLog || { chatLog: [] });
@@ -41,6 +42,7 @@ const App: React.FC = () => {
       };
 
       try {
+        setPrompt('');
         const response = await ollamaRequest(promptRequest);
 
         const chatObject: ChatObject = { prompt, completion: response };

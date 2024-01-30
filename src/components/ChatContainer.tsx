@@ -1,10 +1,9 @@
 // ChatContainer.tsx
 import React, { useState, useEffect } from 'react';
-import { ollamaRequest } from '../ollama/ollamaRequest';
-import { OllamaRequest } from '../interfaces/ollamaInterfaces';
 import { ChatObject } from '../interfaces/chatInterfaces';
 import ChatLog from './ChatLog';
 import ChatInput from './ChatInput';
+import { readLocalStorage, setLocalStorage } from '../localStorage/localStorage';
 
 interface ChatContainerProps {
   prompt: string;
@@ -27,13 +26,13 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
 }) => {
   // Effect to persist chatLog to local storage
   useEffect(() => {
-    localStorage.setItem('chatLog', JSON.stringify(chatLog));
+    setLocalStorage('chatLog', JSON.stringify(chatLog));
   }, [chatLog]);
 
 
   useEffect(() => {
     try {
-      const storedChatLog = localStorage.getItem('chatLog');
+      const storedChatLog = readLocalStorage('chatLog');
       console.log('Stored chat log:', storedChatLog);
 
       if (storedChatLog) {
