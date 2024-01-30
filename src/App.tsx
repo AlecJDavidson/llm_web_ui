@@ -32,7 +32,7 @@ const App: React.FC = () => {
   const storedChatLog = readLocalStorage('chatLog');
   const parsedChatLog = storedChatLog ? JSON.parse(storedChatLog) : null;
 
-  const [chatLog, setChatLog] = useState<ChatObject[]>(parsedChatLog || { chatLog: [] });
+  const [chatLog, setChatLog] = useState<ChatObject[]>(parsedChatLog || []);
 
   const handleSubmit = async () => {
     if (prompt.trim() !== '') {
