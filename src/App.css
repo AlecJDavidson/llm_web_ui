@@ -4,8 +4,8 @@
   --border-color: #ccc;
 
   /* --background-color-dark: #333; */
-  --background-color-dark: #3b4252;
-  --text-color-dark: #fff;
+  --background-color-dark: #343541;
+  --text-color-dark: #BFC3CA;
   --border-color-dark: #555;
 
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -16,8 +16,9 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px; 
+  font-family: -apple-system, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px; 
+  font-weight: 500;
 }
 
 #root {
@@ -51,8 +52,8 @@ body {
   border: 1px solid var(--border-color);
   margin-top: 5px;
   padding: 25px;
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   max-width: 95%;
   max-height: 95%;
   box-shadow: var(--box-shadow);

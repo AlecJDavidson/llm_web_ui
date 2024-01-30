@@ -31,18 +31,18 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
   }, [chatLog]);
 
 
-useEffect(() => {
-  try {
-    const storedChatLog = localStorage.getItem('chatLog');
-    console.log('Stored chat log:', storedChatLog);
+  useEffect(() => {
+    try {
+      const storedChatLog = localStorage.getItem('chatLog');
+      console.log('Stored chat log:', storedChatLog);
 
-    if (storedChatLog) {
-      setChatLog(JSON.parse(storedChatLog));
+      if (storedChatLog) {
+        setChatLog(JSON.parse(storedChatLog));
+      }
+    } catch (error) {
+      console.error('Error loading chatLog from local storage:', error);
     }
-  } catch (error) {
-    console.error('Error loading chatLog from local storage:', error);
-  }
-}, []); // Empty dependency array ensures this runs only on mount
+  }, []); // Empty dependency array ensures this runs only on mount
 
 
   const handleFormSubmit = async () => {

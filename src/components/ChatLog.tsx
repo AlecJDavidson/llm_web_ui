@@ -32,8 +32,8 @@ const ChatLog: React.FC<ChatLogProps> = ({ chatLog }) => {
     <div className="chat-log-box">
       <ul>
         {chatLog.map((chat, chatIndex) => (
-          <div className="chat-message-container" key={chatIndex}>
-            <li>
+          <div key={chatIndex}>
+            <li className="chat-message-container">
               {`You: ${chat.prompt}`}
               <br />
               <br />
