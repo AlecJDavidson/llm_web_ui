@@ -2,8 +2,6 @@
   --background-color: #fff;
   --text-color: #333;
   --border-color: #ccc;
-
-  /* --background-color-dark: #333; */
   --background-color-dark: #343541;
   --text-color-dark: #BFC3CA;
   --border-color-dark: #555;
@@ -53,9 +51,9 @@ body {
   margin-top: 5px;
   padding: 25px;
   width: 95%;
-  height: 95%;
+  height: 90%;
   max-width: 95%;
-  max-height: 95%;
+  max-height: 90%;
   box-shadow: var(--box-shadow);
 }
 
