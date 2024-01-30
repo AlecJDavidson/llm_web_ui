@@ -50,8 +50,6 @@ const App: React.FC = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-
-      setPrompt('');
     }
   };
 
