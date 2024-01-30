@@ -15,7 +15,7 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   font-family: -apple-system, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 17px; 
+  font-size: 17px;
   font-weight: 500;
 }
 
@@ -31,15 +31,16 @@ body {
   align-items: center;
   justify-content: center;
   height: 95vh;
+  width: 100%;
 }
 
 .box {
   border-radius: 10px;
   border: 1px solid var(--border-color);
   padding: 20px;
-  width: 80%;
+  width: 90%;
   height: 90%;
-  max-width: 90%;
+  max-width: 95%;
   max-height: 90%;
   box-shadow: var(--box-shadow);
 }
@@ -68,6 +69,33 @@ body {
   box-shadow: var(--box-shadow);
 }
 
+
+
+.chat-sessions-box {
+  justify-content: center;
+  margin-right: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  height: 92%;
+  width: 100%;
+  max-height: 92%;
+  max-width: 10%;
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+.chat-session-list-item {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+}
+
 .input-container {
   display: flex;
   margin-top: 15px;
@@ -79,7 +107,7 @@ body {
   padding: 8px;
   flex: 1;
   overflow-y: auto;
-  font-size: 15px; 
+  font-size: 15px;
 }
 
 .submit-button {
@@ -88,6 +116,22 @@ body {
   padding: 8px 15px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.chat-sessions-box-button {
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: auto;
+  max-width: 75%;
+  max-height: 7%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 23%;
+  margin-bottom: 5%;
 }
 
 .toggle-dark-mode {
@@ -126,13 +170,10 @@ ul {
 
 /* Dark Mode */
 
-
 body.dark-mode {
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
-
-
 
 body.dark-mode .box,
 body.dark-mode .chat-message-container,
@@ -141,12 +182,24 @@ body.dark-mode .chat-log-box {
   box-shadow: var(--box-shadow);
 }
 
+body.dark-mode .chat-sessions-box {
+  border-radius: 8px;
+  border: 1px solid var(--border-color-dark);
+  padding: 10px;
+  height: 92%;
+  width: 100%;
+  max-height: 92%;
+  max-width: 10%;
+  overflow-y: auto;
+  box-shadow: var(--box-shadow);
+}
+
 body.dark-mode .text-input,
 body.dark-mode .submit-button,
+body.dark-mode .chat-sessions-box-button,
 body.dark-mode .copy-clipboard,
 body.dark-mode .toggle-dark-mode {
   border-color: var(--border-color-dark);
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
-
